@@ -1,0 +1,34 @@
+﻿@page
+@namespace BlazorPrerendering.Server.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    bool isPrerenderWebSite = false;
+    if ( Request.Query["static"]=="1")
+        isPrerenderWebSite = true;
+}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>BlazorStaticWebSite</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="BlazorStaticWebSite.Client.styles.css" rel="stylesheet" />
+</head>
+<body>
+
+    @if (isPrerenderWebSite)
+    {
+        <component type="typeof(BlazorStaticWebSite.Client.App)" render-mode="Static" />
+    }
+    else
+    {
+        <component type="typeof(BlazorStaticWebSite.Client.App)" render-mode="WebAssembly" />
+        <script src="_framework/blazor.webassembly.js"></script>
+    }
+
+</body>
+</html>

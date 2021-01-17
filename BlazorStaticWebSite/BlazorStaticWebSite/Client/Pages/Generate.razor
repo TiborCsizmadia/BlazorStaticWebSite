@@ -1,0 +1,26 @@
+﻿@page "/Generate"
+@inject HttpClient http
+
+<h3>Generate</h3>
+
+<input type="button" value="Generate static Website into wwwroot" @onclick="GenerateWebSiteAsync" />
+
+@if (!String.IsNullOrEmpty(state))
+{
+    <p>@state</p>
+}
+
+
+@code{
+
+    private string state = "";
+
+    private async void GenerateWebSiteAsync()
+    {
+        state = "generating...";
+        StateHasChanged();
+
+        state = await http.GetStringAsync("/WebSiteGenerator/Generate");
+        StateHasChanged();
+    }
+}
