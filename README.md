@@ -52,8 +52,8 @@ Sample for generate a static WebSite from blazor components. If you have to serv
 # Test the static files
 After the static pages are generate in the wwwroot directory you can press f5 for refresh the blazor app and now the pages are served static very fast:
 
-![Screenshot](../master/FirstLoad.png)
+![Screenshot](FirstLoad.PNG)
 
 If you click on FetchData (that is a page without the GenerateStaticPage attribute) the blazor framework loaded and now you are a webassembly application:
 
-![Screenshot](../master/FetchDataLoad.png)
+![Screenshot](FetchData.PNG)
